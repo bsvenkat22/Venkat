@@ -1,0 +1,34 @@
+public class PermutationString {
+	
+	public static void main(String a[]) {
+		String str1 = "venkat", str2 = "taonev";
+		HashSet<Character> chars = new HashSet<Character>();
+		
+		for(int i = 0; i < str1.length(); i++){
+			chars.add(str1.charAt(i));
+		}
+		for(int j = 0; j < str2.length(); j++) {
+			if(!chars.contains(str2.charAt(j))) {
+				System.out.println("No permutation");
+				break;
+			}
+		}
+		
+		
+		int[] letters = new int[256];
+		
+		for(char c : str1.toCharArray()) {
+			letters[c]++;
+		}
+		
+		for(int i=0; i<str2.length(); i++) {
+			int c = (int)str2.charAt(i);
+			if(--letters[c] < 0) {
+				System.out.println("No permutation");
+				break;
+			}
+		}
+		
+	}
+
+}
